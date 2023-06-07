@@ -1,0 +1,51 @@
+package com.gc;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Date;
+
+public class DataMergeMainBackup2 {
+    // Code to correctly output the data format of 2023-05-11 10:10:58
+    class Util {
+        public static LocalDateTime stringtoDate(String str, String pattern) {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern(pattern);
+            LocalDateTime dateTime = LocalDateTime.parse(str, formatter);
+            if (dateTime.getSecond() != 0) {
+                dateTime = dateTime.withSecond(0);
+            }
+            if (dateTime.getNano() != 0) {
+                dateTime = dateTime.withNano(0);
+            }
+            return dateTime;
+        }
+
+        public static LocalDateTime roundToNearestTenMinutes(LocalDateTime dateTime) {
+            int minute = dateTime.getMinute();
+            int minuteRounded = (minute / 10) * 10; // Round down to the nearest multiple of 10
+            return dateTime.withMinute(minuteRounded).withSecond(0).withNano(0);
+        }
+    }
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+public class Util {
+    public static LocalDateTime stringtoDate(String str, String pattern) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(pattern);
+        return LocalDateTime.parse(str, formatter);
+    }
+
+    public static LocalDateTime roundToNearestTenMinutes(LocalDateTime dateTime) {
+        int minute = dateTime.getMinute();
+        int minuteRounded = (minute / 10) * 10; // Round down to the nearest multiple of 10
+        return dateTime.withMinute(minuteRounded).withSecond(0).withNano(0);
+    }
+}
+
