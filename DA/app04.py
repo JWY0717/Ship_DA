@@ -5,14 +5,21 @@ import pandas as pd
 app = Flask(__name__)
 
 # 모델 불러오기
+# D:\장우영\LOCALSEARCH\Ship_DA\DA\model\model_latitude.pkl
 
-with open('D:/장우영/LOCALSEARCH/DA/DA/notebooks/model_latitude.pkl', 'rb') as f:
+with open('D:/장우영/LOCALSEARCH/Ship_DA/DA/model/model_latitude.pkl', 'rb') as f:
     model_latitude = pickle.load(f)
 
-with open('D:/장우영/LOCALSEARCH/DA/DA/notebooks/model_longitude.pkl', 'rb') as f:
+with open('D:/장우영/LOCALSEARCH/Ship_DA/DA/model/model_longitude.pkl', 'rb') as f:
     model_longitude = pickle.load(f)
+    
+with open('D:/장우영/LOCALSEARCH/Ship_DA/DA/model/model_cog.pkl', 'rb') as f:
+    model_cog = pickle.load(f)
 
-@app.route('/predict', methods=['POST'])
+with open('D:/장우영/LOCALSEARCH/Ship_DA/DA/model/model_sog.pkl', 'rb') as f:
+    model_sog = pickle.load(f)
+
+@app.route('/api04/predict', methods=['POST'])
 def predict():
     data = request.get_json()
 
@@ -41,11 +48,14 @@ def predict():
     습도 = data['습도']
 
     # 예측 수행
-    latitude = model_latitude.predict([[mmsi, ship_type, cog, sog, year, month, day, hour, minute, second, 풍향, 유향, 기온, 수온, 풍속, 유속, 기압, 습도]])
-    longitude = model_longitude.predict([[mmsi, ship_type,longitude, cog, sog, year, month, day, hour, minute, second, 풍향, 유향, 기온, 수온, 풍속, 유속, 기압, 습도]])
+    latitude = model_latitude.predict([[mmsi, ship_type, latitude,longitude,cog, sog, year, month, day, hour, minute, second, 풍향, 유향, 기온, 수온, 풍속, 유속, 기압, 습도]])
+    longitude = model_longitude.predict([[mmsi, ship_type,latitude,longitude, cog, sog, year, month, day, hour, minute, second, 풍향, 유향, 기온, 수온, 풍속, 유속, 기압, 습도]])
+    cog = model_cog.predict([[mmsi, ship_type, latitude,longitude,cog, sog, year, month, day, hour, minute, second, 풍향, 유향, 기온, 수온, 풍속, 유속, 기압, 습도]])
+    sog = model_sog.predict([[mmsi, ship_type, latitude,longitude,cog, sog, year, month, day, hour, minute, second, 풍향, 유향, 기온, 수온, 풍속, 유속, 기압, 습도]])
+
 
     # 예측 결과 반환
-    result = {'latitude': latitude[0], 'longitude': longitude[0]}
+    result = {'latitude': latitude[0], 'longitude': longitude[0],'cog': cog[0],'sog': sog[0]}
     return jsonify(result)
     
 

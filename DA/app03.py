@@ -4,19 +4,19 @@ import pickle
 app = Flask(__name__)
 
 # 모델 불러오기
-with open('D:/장우영/LOCALSEARCH/DA/DA/notebooks/model_latitude02.pkl', 'rb') as f:
+with open('D:/장우영/LOCALSEARCH/Ship_DA/DA/model_latitude02.pkl', 'rb') as f:
     model_latitude = pickle.load(f)
 
-with open('D:/장우영/LOCALSEARCH/DA/DA/notebooks/model_longitude02.pkl', 'rb') as f:
+with open('D:/장우영/LOCALSEARCH/Ship_DA/DA/model_longitude02.pkl', 'rb') as f:
     model_longitude = pickle.load(f)
 
-with open('D:/장우영/LOCALSEARCH/DA/DA/notebooks/model_cog02.pkl', 'rb') as f:
+with open('D:/장우영/LOCALSEARCH/Ship_DA/DA/model_cog02.pkl', 'rb') as f:
     model_cog = pickle.load(f)
 
-with open('D:/장우영/LOCALSEARCH/DA/DA/notebooks/model_sog02.pkl', 'rb') as f:
+with open('D:/장우영/LOCALSEARCH/Ship_DA/DA/    model_sog02.pkl', 'rb') as f:
     model_sog = pickle.load(f)
 
-@app.route('/api/predict', methods=['POST'])
+@app.route('/api03/predict', methods=['POST'])
 def predict():
     data = request.get_json()
 

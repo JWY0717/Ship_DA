@@ -9,7 +9,7 @@ app = Flask(__name__)
 model = pickle.load(open('D:/장우영/LOCALSEARCH/DA/DA/notebooks/linear_regression_model_Lstm.pkl', 'rb'))
 
 # 예측 끝점 정의    
-@app.route('/api/predict', methods=['POST'])
+@app.route('/api02/predict', methods=['POST'])
 def predict():
     # 들어오는 요청에서 데이터 가져오기
     data = request.json
