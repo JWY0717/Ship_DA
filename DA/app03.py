@@ -13,7 +13,7 @@ with open('D:/장우영/LOCALSEARCH/Ship_DA/DA/model_longitude02.pkl', 'rb') as 
 with open('D:/장우영/LOCALSEARCH/Ship_DA/DA/model_cog02.pkl', 'rb') as f:
     model_cog = pickle.load(f)
 
-with open('D:/장우영/LOCALSEARCH/Ship_DA/DA/    model_sog02.pkl', 'rb') as f:
+with open('D:/장우영/LOCALSEARCH/Ship_DA/DA/model_sog02.pkl', 'rb') as f:
     model_sog = pickle.load(f)
 
 @app.route('/api03/predict', methods=['POST'])

@@ -1,8 +1,10 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 import pickle
 import pandas as pd
 
 app = Flask(__name__)
+CORS(app)
 
 # 모델 불러오기
 # D:\장우영\LOCALSEARCH\Ship_DA\DA\model\model_latitude.pkl
@@ -22,6 +24,8 @@ with open('D:/장우영/LOCALSEARCH/Ship_DA/DA/model/model_sog.pkl', 'rb') as f:
 @app.route('/api04/predict', methods=['POST'])
 def predict():
     data = request.get_json()
+    
+    app.logger.info(data)
 
     
   
