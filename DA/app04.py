@@ -40,7 +40,7 @@ def predict():
     month = data['month']
     day = data['day']
     hour = data['hour']
-    minute = data['minute']
+    minute = data['minute'] + 1 
     second = data['second']
     풍향 = data['풍향']
     유향 = data['유향']
