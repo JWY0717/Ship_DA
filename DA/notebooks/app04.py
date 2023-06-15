@@ -27,7 +27,6 @@ def predict():
     
     app.logger.info(data)
 
-    
   
     # 예측에 사용할 특성 추출
     mmsi = data['mmsi']
