@@ -21,7 +21,7 @@ with open('D:/장우영/LOCALSEARCH/Ship_DA/DA/model/model_cog.pkl', 'rb') as f:
 with open('D:/장우영/LOCALSEARCH/Ship_DA/DA/model/model_sog.pkl', 'rb') as f:
     model_sog = pickle.load(f)
 
-@app.route('/api04/predict', methods=['POST'])
+@app.route('/api05/predict/', methods=['POST'])
 def predict():
     data = request.get_json()
     
@@ -35,22 +35,24 @@ def predict():
     longitude = data['longitude']
     cog = data['cog']
     sog = data['sog']
-    year = data['year']
-    month = data['month']
-    day = data['day']
-    hour = data['hour']
-    minute = data['minute'] + 1 
-    second = data['second']
-    wind_direction = data['풍향']
-    direct = data['유향']
-    temperatures = data['기온']
-    water_temperature = data['수온']
-    wind_speed = data['풍속']
-    current_speed = data['유속']
-    atmospheric_pressure = data['기압']
-    humidity = data['습도']
+    # year = data['year']
+    # month = data['month']
+    # day = data['day']
+    # hour = data['hour']
+    # minute = data['minute'] + 1 
+    # second = data['second']
+    # wind_direction = data['풍향']
+    # direct = data['유향']
+    # temperatures = data['기온']
+    # water_temperature = data['수온']
+    # wind_speed = data['풍속']
+    # current_speed = data['유속']
+    # atmospheric_pressure = data['기압']
+    # humidity = data['습도']
 
+    
     # 예측 수행
+    
     latitude = model_latitude.predict([[mmsi, ship_type, latitude,longitude,cog, sog, year, month, day, hour, minute, second, wind_direction, direct, temperatures, water_temperature, wind_speed, current_speed, atmospheric_pressure, humidity]])
     longitude = model_longitude.predict([[mmsi, ship_type,latitude,longitude, cog, sog, year, month, day, hour, minute, second, wind_direction, direct, temperatures, water_temperature, wind_speed, current_speed, atmospheric_pressure, humidity]])
     cog = model_cog.predict([[mmsi, ship_type, latitude,longitude,cog, sog, year, month, day, hour, minute, second, wind_direction, direct, temperatures, water_temperature, wind_speed, current_speed, atmospheric_pressure, humidity]])
