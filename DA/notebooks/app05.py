@@ -67,3 +67,10 @@ def predict():
 # 플라스크 애플리케이션 실행
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)
+    
+    
+    
+# Flask                        2.3.2  
+# Flask-Cors                   3.0.10  
+# pandas                       2.0.1
+# pickleshare                  0.7.5
