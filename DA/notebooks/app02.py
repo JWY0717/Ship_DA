@@ -6,10 +6,10 @@ import pickle
 app = Flask(__name__)
 
 # LSTM 모델과 스케일러를 로드합니다.
-with open('D:/장우영/LOCALSEARCH/Ship_DA/DA/model/linear_regression_model_Lstm.pkl', 'rb') as f:
+with open('D:/장우영/LOCALSEARCH/Ship_DA/DA/model/linear_regression_model_Lstm.pkl_0623', 'rb') as f:
     model_LSTRM = pickle.load(f)
 
-with open('D:/장우영/LOCALSEARCH/Ship_DA/DA/model/scaler.pkl', 'rb') as f:
+with open('D:/장우영/LOCALSEARCH/Ship_DA/DA/model/scaler.pkl_0623', 'rb') as f:
     scaler = pickle.load(f)
 
 
